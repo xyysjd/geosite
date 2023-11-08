@@ -50,31 +50,14 @@ jobs:
           rm -rf code
         shell: bash
 
-
-      - name: hidden
-        run: ls -R ./hidden
-        shell: bash
-
       - name: Custom modification
         run: |
           curl -sSL "https://github.com/crazy-max/WindowsSpyBlocker/raw/master/data/hosts/update.txt" | grep "0.0.0.0" | awk '{print $2}' > ./data/win-update
           sed -i '/include:tld-!cn/d' ./data/geolocation-!cn
-
-          # 处理所有 !CN 文件夹中的 .txt 文件
-          for file in ./custom/!CN/*.txt; do
-            if [ -f "$file" ]; then
-              mv "$file" "./data/!CN/$(basename "$file")"
-              echo "include:!CN/$(basename "$file")" >> ./data/geolocation-!cn
-            fi
-          done
-
-          # 处理所有 CN 文件夹中的 .txt 文件
-          for file in ./custom/CN/*.txt; do
-            if [ -f "$file" ]; then
-              mv "$file" "./data/CN/$(basename "$file")"
-              echo "include:CN/$(basename "$file")" >> ./data/geolocation-cn
-            fi
-          done
+          mv ./custom/!CN/ziyon.txt ./data/ziyon
+          mv ./custom/CN/custom_direct.txt ./data/geolocation-cn
+          echo "include:ziyon" >> ./data/geolocation-!cn
+          cat ./custom/CN/custom_direct.txt >> ./data/geolocation-cn
         shell: bash
 
       - name: Build dat file
