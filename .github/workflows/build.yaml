@@ -51,9 +51,9 @@ jobs:
         shell: bash
 
 
-     - name: List files and directories in hidden branch
-       run: ls -R ./hidden
-       shell: bash
+      - name: hidden
+        run: ls -R ./hidden
+        shell: bash
 
       - name: Custom modification
         run: |
