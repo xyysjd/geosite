@@ -50,6 +50,11 @@ jobs:
           rm -rf code
         shell: bash
 
+
+     - name: List files and directories in hidden branch
+       run: ls -R ./hidden
+       shell: bash
+
       - name: Custom modification
         run: |
           curl -sSL "https://github.com/crazy-max/WindowsSpyBlocker/raw/master/data/hosts/update.txt" | grep "0.0.0.0" | awk '{print $2}' > ./data/win-update
