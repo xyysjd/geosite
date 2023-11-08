@@ -54,8 +54,8 @@ jobs:
         run: |
           curl -sSL "https://github.com/crazy-max/WindowsSpyBlocker/raw/master/data/hosts/update.txt" | grep "0.0.0.0" | awk '{print $2}' > ./data/win-update
           sed -i '/include:tld-!cn/d' ./data/geolocation-!cn
-          mv ./custom/nivodtv.txt ./data/nivodtv
-          echo "include:nivodtv" >> ./data/geolocation-!cn
+          mv ./custom/ziyon.txt ./data/ziyon
+          echo "include:ziyon" >> ./data/geolocation-!cn
           cat ./custom/custom_direct.txt >> ./data/geolocation-cn
         shell: bash
 
