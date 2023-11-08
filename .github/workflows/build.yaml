@@ -54,16 +54,18 @@ jobs:
         run: |
           curl -sSL "https://github.com/crazy-max/WindowsSpyBlocker/raw/master/data/hosts/update.txt" | grep "0.0.0.0" | awk '{print $2}' > ./data/win-update
           sed -i '/include:tld-!cn/d' ./data/geolocation-!cn
-          mv ./custom/!CN/ziyon.txt ./data/ziyon
-          mv ./custom/CN/custom_direct.txt ./data/geolocation-cn
+          mv ./custom/ziyon.txt ./data/ziyon
           echo "include:ziyon" >> ./data/geolocation-!cn
-          cat ./data/geolocation-cn/custom_direct.txt >> ./data/geolocation-cn
+          mv ./custom/emby.txt ./data/emby
+          echo "include:emby" >> ./data/geolocation-!cn
+          cat ./custom/custom_direct.txt >> ./data/geolocation-cn
         shell: bash
 
       - name: Build dat file
         run: |
           mkdir -p publish
           go run ./ --outputdir=./publish/
+
       - name: Checkout Geo Repo
         uses: actions/checkout@v4
         with:
@@ -74,6 +76,7 @@ jobs:
         run: |
           cd geo && go install -trimpath -ldflags="-s -w -buildid=" ./cmd/geo && cd ..
           geo convert site -i v2ray -o sing -f ./publish/geosite.db ./publish/geosite.dat
+
       - name: Git push files to "release" branch
         if: success()
         run: |
