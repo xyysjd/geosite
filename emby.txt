@@ -8,6 +8,7 @@ keyword:cdn2.misakaf.org
 keyword:push-kr.misakaf.org
 keyword:cc.carryz.net
 keyword:789.123456.al
+keyword:a.nel.cloudflare.com
 keyword:temby.285286.xyz
 keyword:emby.ws
 keyword:infinityfly.top
