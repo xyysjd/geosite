@@ -69,7 +69,7 @@ jobs:
       - name: Checkout Geo Repo
         uses: actions/checkout@v4
         with:
-          repository: d2184/geo
+          repository: MetaCubeX/geo
           path: geo
 
       - name: Converter to db file
