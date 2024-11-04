@@ -58,6 +58,8 @@ jobs:
           echo "include:ziyon" >> ./data/geolocation-!cn
           mv ./custom/emby.txt ./data/emby
           echo "include:emby" >> ./data/geolocation-!cn
+          mv ./custom/openai.txt ./data/openai
+          echo "include:openai" >> ./data/geolocation-!cn
           cat ./custom/custom_direct.txt >> ./data/geolocation-cn
         shell: bash
 
