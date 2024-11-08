@@ -61,6 +61,9 @@ jobs:
           mv ./custom/openai.txt ./data/openai
           echo "include:openai" >> ./data/geolocation-!cn
           cat ./custom/custom_direct.txt >> ./data/geolocation-cn
+          # 下载并移动 anthropic 文件
+          curl -sSL "https://raw.githubusercontent.com/v2fly/domain-list-community/16d375d8ddb7bbe4b6ff42757405fca421980036/data/anthropic" -o ./data/claude
+          echo "include:claude" >> ./data/geolocation-!cn
         shell: bash
 
       - name: Build dat file
